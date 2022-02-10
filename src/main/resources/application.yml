@@ -1,17 +1,24 @@
 spring:
   datasource:
     hikari:
-      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      jdbc-url: jdbc:h2:file:/Users/minsukoo/Desktop/h2/sample_quartz_/sample_quartz;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
       driverClassName: org.h2.Driver
       username: sa
       password:
   jpa:
     show-sql: true
+    open-in-view: false
   h2:
     console:
       enabled: true
       path: /h2-console
   batch.job.enabled: false
+  quartz: # spring quartz config
+    scheduler-name: MyScheduler
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never # 자동으로 테이블이 생성된다, 이미 생성된 테이블은 삭제처리 (always, never)
+    overwrite-existing-jobs: true # 생성된 작업 덮어 쓰기
 
 server:
   port: 8599
