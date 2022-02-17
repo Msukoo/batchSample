@@ -1,2 +1,2 @@
 # batchSample
-batch sample + Quartz
+Spring Batch + Quartz
